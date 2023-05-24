@@ -1,8 +1,8 @@
 const SectionTitle = ({ subTitle, title }) => {
    return (
-      <div>
-         <p className="text-yellow-600">---{subTitle}---</p>
-         <h4>{title}</h4>
+      <div className="text-center w-1/3 mx-auto my-12">
+         <p className="text-yellow-600 italic">--- {subTitle} ---</p>
+         <h4 className="font-inter uppercase text-5xl border-y-4 my-4 py-6">{title}</h4>
       </div>
    );
 };
