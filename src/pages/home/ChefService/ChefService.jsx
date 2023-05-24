@@ -2,10 +2,7 @@ import chefServiceImg from "../../../assets/home/chef-service.jpg";
 
 const ChefService = () => {
    return (
-      <div
-         className="max-w-screen-xl mx-auto py-24 bg-fixed bg-no-repeat"
-         style={{ backgroundImage: `url('${chefServiceImg}')` }}
-      >
+      <div className="py-24 bg-fixed bg-no-repeat" style={{ backgroundImage: `url('${chefServiceImg}')` }}>
          <div className="bg-white w-4/5 mx-auto py-20 text-center">
             <h2 className="text-4xl">Bistro Boss</h2>
             <p className="w-2/3 mx-auto">

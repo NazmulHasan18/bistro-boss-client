@@ -17,3 +17,17 @@ body {
    display: flex;
    justify-content: center;
 }
+.cardButton {
+   background-color: #e8e8e8;
+   padding: 20px 30px;
+   border-radius: 10px;
+   border-bottom: 3px solid #bb8506;
+   color: #bb8506;
+   text-transform: uppercase;
+   font-weight: 600;
+   font-size: 18px;
+}
+.cardButton:hover {
+   background-color: #1f2937;
+   border-bottom: 3px solid #1f2937;
+}

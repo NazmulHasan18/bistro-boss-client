@@ -10,7 +10,7 @@ const Menu = () => {
          .then((data) => setMenus(data));
    }, []);
    return (
-      <div className="max-w-screen-xl mx-auto my-20">
+      <div className="my-20">
          <SectionTitle title={"From Our menu"} subTitle={"Check it out"}></SectionTitle>
          <div className="grid grid-cols-2 gap-5">
             {menus.slice(0, 6).map((menu) => (
