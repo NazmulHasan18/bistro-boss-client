@@ -14,7 +14,7 @@ import slide5 from "../../../assets/home/slide5.jpg";
 
 const Order = () => {
    return (
-      <div>
+      <div className="max-w-screen-xl mx-auto">
          <SectionTitle title="Order Online" subTitle="From 11:00am to 10:00pm"></SectionTitle>
          <div className="mb-28">
             <Swiper
