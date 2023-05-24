@@ -1,20 +1,85 @@
+import logo from "../../../assets/mainlogo.png";
+import cartlogo from "../../../assets/icon/cartlogo.png";
+import { NavLink } from "react-router-dom";
+
 const NavBar = () => {
    const navOptions = (
       <>
          <li>
-            <a>Item 1</a>
+            <NavLink
+               className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+               }
+               to="/"
+            >
+               Home
+            </NavLink>
          </li>
          <li>
-            <a>Item 2</a>
+            <NavLink
+               className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+               }
+               to="/contact"
+            >
+               Contact
+            </NavLink>
          </li>
          <li>
-            <a>Item 3</a>
+            <NavLink
+               className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+               }
+               to="/dashboard"
+            >
+               Dashboard
+            </NavLink>
+         </li>
+         <li>
+            <NavLink
+               className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+               }
+               to="/menu"
+            >
+               Our Menu
+            </NavLink>
+         </li>
+         <li>
+            <NavLink
+               className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+               }
+               to="/shop"
+            >
+               Our Shop
+            </NavLink>
+         </li>
+         <li>
+            <NavLink
+               className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+               }
+               to="/cart"
+            >
+               <img src={cartlogo} alt="" className="w-16" />
+            </NavLink>
+         </li>
+         <li>
+            <NavLink
+               className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+               }
+               to="/sign_out"
+            >
+               Sign Out
+            </NavLink>
          </li>
       </>
    );
 
    return (
-      <nav className="navbar bg-base-100">
+      <nav className="navbar bg-black bg-opacity-40 text-white h-24 fixed z-10">
          <div className="navbar-start">
             <div className="dropdown">
                <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,18 +100,17 @@ const NavBar = () => {
                </label>
                <ul
                   tabIndex={0}
-                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 uppercase"
                >
                   {navOptions}
                </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+            <a className="btn btn-ghost normal-case text-xl">
+               <img src={logo} alt="Bistro Boss" className="h-16" />
+            </a>
          </div>
          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{navOptions}</ul>
-         </div>
-         <div className="navbar-end">
-            <a className="btn">Get started</a>
+            <ul className="menu menu-horizontal px-1 uppercase">{navOptions}</ul>
          </div>
       </nav>
    );
