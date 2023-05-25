@@ -1,6 +1,7 @@
 import Banner from "../Banner/Banner";
 import CallUs from "../CallUs/CallUs";
 import ChefService from "../ChefService/ChefService";
+import Featured from "../Featured/Featured";
 import Menu from "../Menu/Menu";
 import Order from "../Order/Order";
 import Recommend from "../Recommend/Recommend";
@@ -16,6 +17,7 @@ const Home = () => {
             <CallUs></CallUs>
             <Recommend></Recommend>
          </div>
+         <Featured></Featured>
       </div>
    );
 };
