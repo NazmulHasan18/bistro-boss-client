@@ -2,7 +2,7 @@ import img from "../../../assets/home/featured.jpg";
 
 const Featured = () => {
    return (
-      <div style={{ backgroundImage: `url(${img})` }} className="bg-fixed my-24">
+      <div style={{ backgroundImage: `url(${img})` }} className="bg-fixed bg-no-repeat my-24">
          <div className="bg-black bg-opacity-50 w-full py-28">
             <div className="text-center w-1/3 mx-auto my-12">
                <p className="text-yellow-600 italic">---Check It Out---</p>
@@ -10,7 +10,7 @@ const Featured = () => {
                   From Our Menu
                </h4>
             </div>
-            <div className="px-72 md:grid grid-cols-2 gap-6 items-center">
+            <div className="max-w-screen-xl mx-auto md:grid grid-cols-2 gap-6 items-center">
                <img src={img} alt="" />
                <div className="text-white">
                   <h3 className="text-xl">March 20, 2023</h3>
