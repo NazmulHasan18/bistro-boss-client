@@ -15,7 +15,7 @@ const Home = () => {
             <title>Bistro Boss | Home</title>
          </Helmet>
          <Banner></Banner>
-         <div className="max-w-screen-xl mx-auto">
+         <div className="max-w-[1320px] mx-auto">
             <Order></Order>
             <ChefService></ChefService>
             <Menu></Menu>
@@ -23,7 +23,7 @@ const Home = () => {
             <Recommend></Recommend>
          </div>
          <Featured></Featured>
-         <div className="max-w-screen-xl mx-auto">
+         <div className="max-w-[1320px] mx-auto">
             <Testimonial></Testimonial>
          </div>
       </div>

@@ -5,7 +5,7 @@ import CustomCard from "../../shared/CustomCard/CustomCard";
 const Recommend = () => {
    const [recommends, setRecommends] = useState([]);
    useEffect(() => {
-      fetch("recommends.json")
+      fetch("http://localhost:3000/menu/popular")
          .then((res) => res.json())
          .then((data) => setRecommends(data));
    }, []);
@@ -15,7 +15,7 @@ const Recommend = () => {
          <SectionTitle title="chef recommends" subTitle="Should Try"></SectionTitle>
          <div className="md:grid grid-cols-3">
             {recommends.map((item) => (
-               <CustomCard key={item.id} item={item}></CustomCard>
+               <CustomCard key={item._id} item={item}></CustomCard>
             ))}
          </div>
       </div>

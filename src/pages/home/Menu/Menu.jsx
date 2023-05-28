@@ -4,16 +4,19 @@ import MenuItem from "../../shared/MenuItem/MenuItem";
 
 const Menu = () => {
    const [menus, setMenus] = useState([]);
+
    useEffect(() => {
-      fetch("menu.json")
+      fetch(`http://localhost:3000/menu/popular`)
          .then((res) => res.json())
-         .then((data) => setMenus(data));
+         .then((data) => {
+            setMenus(data);
+         });
    }, []);
    return (
       <div className="my-20">
          <SectionTitle title={"From Our menu"} subTitle={"Check it out"}></SectionTitle>
          <div className="grid grid-cols-2 gap-5">
-            {menus.slice(0, 6).map((menu) => (
+            {menus.map((menu) => (
                <MenuItem key={menu._id} menu={menu}></MenuItem>
             ))}
          </div>
