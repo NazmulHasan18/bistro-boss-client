@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MenuItem from "../../../shared/MenuItem/MenuItem";
 
 const MenuItems = ({ items }) => {
@@ -9,9 +10,11 @@ const MenuItems = ({ items }) => {
             ))}
          </div>
          <div className="flex justify-center my-6">
-            <button className="btn btn-outline border-0 border-b-4 border-slate-900 bg-transparent">
-               ORDER YOUR FAVOURITE FOOD
-            </button>
+            <Link to={`/shop/${items[0]?.category}`}>
+               <button className="btn btn-outline border-0 border-b-4 border-slate-900 bg-transparent">
+                  ORDER YOUR FAVOURITE FOOD
+               </button>
+            </Link>
          </div>
       </div>
    );

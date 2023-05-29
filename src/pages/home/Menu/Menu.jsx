@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../../component/SectionTitle/SectionTitle";
 import MenuItem from "../../shared/MenuItem/MenuItem";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
    const [menus, setMenus] = useState([]);
@@ -21,9 +22,11 @@ const Menu = () => {
             ))}
          </div>
          <div className="flex justify-center my-6">
-            <button className="btn btn-outline border-0 border-b-4 border-slate-900 bg-transparent">
-               View Full Menu
-            </button>
+            <Link to="/menu">
+               <button className="btn btn-outline border-0 border-b-4 border-slate-900 bg-transparent">
+                  View Full Menu
+               </button>
+            </Link>
          </div>
       </div>
    );

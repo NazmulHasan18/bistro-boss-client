@@ -50,7 +50,7 @@ const NavBar = () => {
                className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
                }
-               to="/shop"
+               to="/shop/category"
             >
                Our Shop
             </NavLink>
