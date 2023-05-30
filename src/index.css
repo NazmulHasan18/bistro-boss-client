@@ -41,3 +41,13 @@ body {
    font-weight: 600;
    text-transform: capitalize;
 }
+.captcha canvas {
+   width: 100%;
+   padding: 10px 200px 5px 10px;
+   border-radius: 8px;
+   border: 1px solid #d1d1d1;
+   background-color: white;
+}
+.captcha a {
+   font-size: 20px;
+}

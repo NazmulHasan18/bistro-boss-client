@@ -1,8 +1,14 @@
 import logo from "../../../assets/mainlogo.png";
 import cartlogo from "../../../assets/icon/cartlogo.png";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const NavBar = () => {
+   const { user } = useContext(AuthContext);
+
+   console.log(user);
+
    const navOptions = (
       <>
          <li>
@@ -55,26 +61,53 @@ const NavBar = () => {
                Our Shop
             </NavLink>
          </li>
-         <li>
-            <NavLink
-               className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-               }
-               to="/cart"
-            >
-               <img src={cartlogo} alt="" className="w-16" />
-            </NavLink>
-         </li>
-         <li>
-            <NavLink
-               className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-               }
-               to="/sign_out"
-            >
-               Sign Out
-            </NavLink>
-         </li>
+         {user ? (
+            <>
+               <li>
+                  <NavLink
+                     className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+                     }
+                     to="/cart"
+                  >
+                     <img src={cartlogo} alt="" className="w-16" />
+                  </NavLink>
+               </li>
+               <li>
+                  <NavLink
+                     className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+                     }
+                     to="/sign_out"
+                  >
+                     Sign Out
+                  </NavLink>
+               </li>
+            </>
+         ) : (
+            <>
+               <li>
+                  <NavLink
+                     className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+                     }
+                     to="/profile"
+                  >
+                     Profile
+                  </NavLink>
+               </li>
+               <li>
+                  <NavLink
+                     className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+                     }
+                     to="/login"
+                  >
+                     Login
+                  </NavLink>
+               </li>
+            </>
+         )}
       </>
    );
 

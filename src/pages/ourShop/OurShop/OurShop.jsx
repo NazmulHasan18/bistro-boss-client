@@ -18,9 +18,9 @@ const OurShop = () => {
             setLoading(false);
          });
    }, []);
-   console.log(category);
+
    let defaultIndex = categories.indexOf(category);
-   console.log(category, defaultIndex);
+
    if (defaultIndex === -1) {
       defaultIndex = 0;
    }
