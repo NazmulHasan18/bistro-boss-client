@@ -5,9 +5,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const NavBar = () => {
-   const { user } = useContext(AuthContext);
+   const { user, logOut } = useContext(AuthContext);
 
-   console.log(user);
+   const handelLogOut = () => {
+      logOut()
+         .then(() => {})
+         .catch((error) => console.log(error));
+   };
 
    const navOptions = (
       <>
@@ -76,9 +80,9 @@ const NavBar = () => {
                <li>
                   <NavLink
                      className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
+                        isPending ? "pending" : isActive ? "font-semibold" : ""
                      }
-                     to="/sign_out"
+                     onClick={handelLogOut}
                   >
                      Sign Out
                   </NavLink>

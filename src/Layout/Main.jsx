@@ -10,7 +10,6 @@ const Main = () => {
 
    useEffect(() => {
       if (location.includes("/login") || location.includes("/register")) {
-         console.log("entered");
          setLogin(true);
       } else {
          setLogin(false);
