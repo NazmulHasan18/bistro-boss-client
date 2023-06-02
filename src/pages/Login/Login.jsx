@@ -3,12 +3,17 @@ import bgImg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication1.png";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const Login = () => {
    const [disable, setDisable] = useState(true);
    const { loginEmailPass, user } = useContext(AuthContext);
+   const navigate = useNavigate();
+   const from = useLocation().state?.pathname || "/";
 
    const {
       register,
@@ -35,10 +40,24 @@ const Login = () => {
    };
 
    const handelLogin = (data) => {
-      console.log(data);
+      if (disable) {
+         return Swal.fire({
+            icon: "error",
+            title: "Please Validate Captcha First",
+            timer: 3000,
+            showConfirmButton: false,
+         });
+      }
       loginEmailPass(data.email, data.password)
-         .then((result) => {
-            console.log(result.user);
+         .then(() => {
+            Swal.fire({
+               icon: "success",
+               title: "User Login Successful",
+               timer: 3000,
+               showConfirmButton: false,
+            }).then(() => {
+               navigate(from);
+            });
          })
          .catch((error) => {
             console.log(error);
@@ -47,6 +66,9 @@ const Login = () => {
 
    return (
       <div className="min-h-screen py-24" style={{ backgroundImage: `url(${bgImg})` }}>
+         <Helmet>
+            <title>Bistro Boss | Login</title>
+         </Helmet>
          <div className="hero min-h-screen bg-transparent mx-auto shadow-2xl max-w-[1673px]">
             <div className="hero-content w-full flex-col lg:flex-row">
                <img src={loginImg} className="w-1/2 rounded-lg" />
@@ -121,6 +143,7 @@ const Login = () => {
                         </Link>
                      </p>
                   </div>
+                  <SocialLogin></SocialLogin>
                </div>
             </div>
          </div>

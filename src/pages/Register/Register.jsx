@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bgImg from "../../assets/others/authentication.png";
 import registerImg from "../../assets/others/authentication1.png";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const Register = () => {
    const { registerEmailPass, updateUser } = useContext(AuthContext);
@@ -12,15 +14,33 @@ const Register = () => {
       handleSubmit,
       formState: { errors },
    } = useForm();
+   const navigate = useNavigate();
 
    const handelRegister = (data) => {
-      console.log(data);
       registerEmailPass(data.email, data.password)
          .then((result) => {
             if (result.user) {
                updateUser(data.name)
                   .then(() => {
                      console.log(result.user);
+                     const newUser = { name: result.user.displayName, email: result.user.email };
+                     fetch("http://localhost:3000/users", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(newUser),
+                     })
+                        .then((res) => res.json())
+                        .then((data) => {
+                           if (data.insertedId) {
+                              Swal.fire({
+                                 icon: "success",
+                                 title: "User Login Successful",
+                                 timer: 3000,
+                                 showConfirmButton: false,
+                              });
+                           }
+                           navigate("/dashboard");
+                        });
                   })
                   .catch((error) => console.log(error));
             }
@@ -30,6 +50,9 @@ const Register = () => {
 
    return (
       <div className="min-h-screen py-24" style={{ backgroundImage: `url(${bgImg})` }}>
+         <Helmet>
+            <title>Bistro Boss | Login</title>
+         </Helmet>
          <div className="hero min-h-screen bg-transparent mx-auto shadow-2xl max-w-[1673px]">
             <div className="hero-content w-full flex-col lg:flex-row-reverse">
                <img src={registerImg} className="w-1/2 rounded-lg" />

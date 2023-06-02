@@ -1,35 +1,39 @@
 import logo from "../../../assets/mainlogo.png";
-import cartlogo from "../../../assets/icon/cartlogo.png";
+
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { FaShoppingCart } from "react-icons/fa";
+import useCarts from "../../../hooks/useCarts";
 
 const NavBar = () => {
    const { user, logOut } = useContext(AuthContext);
+   const [carts] = useCarts();
 
    const handelLogOut = () => {
       logOut()
-         .then(() => {})
+         .then(() => {
+            Swal.fire({
+               icon: "success",
+               title: "User Log Out Successful",
+               timer: 3000,
+               showConfirmButton: false,
+            });
+         })
          .catch((error) => console.log(error));
    };
 
    const navOptions = (
       <>
          <li>
-            <NavLink
-               className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-               }
-               to="/"
-            >
+            <NavLink className={({ isActive }) => (isActive ? "text-yellow-400 font-semibold" : "")} to="/">
                Home
             </NavLink>
          </li>
          <li>
             <NavLink
-               className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-               }
+               className={({ isActive }) => (isActive ? "text-yellow-400 font-semibold" : "")}
                to="/contact"
             >
                Contact
@@ -37,9 +41,7 @@ const NavBar = () => {
          </li>
          <li>
             <NavLink
-               className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-               }
+               className={({ isActive }) => (isActive ? "text-yellow-400 font-semibold" : "")}
                to="/dashboard"
             >
                Dashboard
@@ -47,9 +49,7 @@ const NavBar = () => {
          </li>
          <li>
             <NavLink
-               className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-               }
+               className={({ isActive }) => (isActive ? "text-yellow-400 font-semibold" : "")}
                to="/menu"
             >
                Our Menu
@@ -57,9 +57,7 @@ const NavBar = () => {
          </li>
          <li>
             <NavLink
-               className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-               }
+               className={({ isActive }) => (isActive ? "text-yellow-400 font-semibold" : "")}
                to="/shop/category"
             >
                Our Shop
@@ -69,23 +67,18 @@ const NavBar = () => {
             <>
                <li>
                   <NavLink
-                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "text-yellow-400 font-semibold" : ""
-                     }
-                     to="/cart"
+                     className={({ isActive }) => (isActive ? "text-yellow-400 font-semibold" : "")}
+                     to="/dashboard/cart"
                   >
-                     <img src={cartlogo} alt="" className="w-16" />
+                     <FaShoppingCart className="text-xl"></FaShoppingCart>
+
+                     <div className="badge badge-lg badge-secondary">+{carts.length}</div>
                   </NavLink>
                </li>
                <li>
-                  <NavLink
-                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "font-semibold" : ""
-                     }
-                     onClick={handelLogOut}
-                  >
+                  <button className="text-lg" onClick={handelLogOut}>
                      Sign Out
-                  </NavLink>
+                  </button>
                </li>
             </>
          ) : (

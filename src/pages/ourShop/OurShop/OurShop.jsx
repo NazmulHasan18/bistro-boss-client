@@ -36,7 +36,7 @@ const OurShop = () => {
             subTitle={"Would You Like To Try A Dish?"}
          ></PageCover>
          <div className="max-w-[1320px] mx-auto my-16">
-            <Tabs defaultIndex={defaultIndex} onSelect={(index) => console.log(index)}>
+            <Tabs defaultIndex={defaultIndex}>
                <TabList className="text-center text-xl mb-10">
                   {categories.map((category, index) => (
                      <Tab key={index}>{category}</Tab>
