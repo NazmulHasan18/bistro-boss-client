@@ -12,9 +12,8 @@ const SocialLogin = () => {
    const handelGoogleLogin = () => {
       googleLogin()
          .then((result) => {
-            console.log(result.user);
             const newUser = { name: result.user.displayName, email: result.user.email };
-            console.log(newUser);
+
             fetch("http://localhost:3000/users", {
                method: "POST",
                headers: { "Content-Type": "application/json" },
